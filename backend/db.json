@@ -1,0 +1,30 @@
+{
+"users": [
+{
+"id": 1,
+"username": "sara",
+"avatar": "https://ui-avatars.com/api/?name=sara" },
+{
+"id": 2,
+"username": "youssef",
+"avatar": "https://ui-avatars.com/api/?name=youssef"
+}
+],
+"tasks": [
+{
+"id": 1,
+"title": "Apprendre Redux",
+"description": "Comprendre reducers, actions et store",
+"status": "todo",
+"priority": "high",
+"userId": 1
+},
+{
+"id": 2,
+"title": "Configurer JSON Server",
+"description": "Créer un faux backend",
+"status": "in-progress",
+"priority": "medium",
+"userId": 2
+}
+]}
