@@ -1,31 +1,35 @@
-import TaskCard from "./TaskCard";
+import React from 'react';
 
-function Column({ title, tasks, onDrop }) {
-    const handleDrop = (e) => {
+const Column = ({ title, status, tasks, onDrop, onDetails }) => {
+    const handleDragOver = (e) => {
+        e.preventDefault();
+    };
+
+    const handleDropEvent = (e) => {
+        e.preventDefault();
         const taskId = e.dataTransfer.getData("taskId");
-        onDrop(Number(taskId));
+        if (taskId) {
+            onDrop(parseInt(taskId, 10), status);
+        }
+    };
+
+    const handleDragStart = (e, taskId) => {
+        e.dataTransfer.setData("taskId", taskId);
     };
 
     return (
-        <div
-            className="column"
-            onDragOver={(e) => e.preventDefault()}
-            onDrop={handleDrop}
-        >
-            <h2>{title}</h2>
+        <div onDragOver={handleDragOver} onDrop={handleDropEvent}>
+            <h3>{title}</h3>
             {tasks.map((task) => (
-                <div
-                    key={task.id}
-                    draggable
-                    onDragStart={(e) =>
-                        e.dataTransfer.setData("taskId", task.id)
-                    }
-                >
-                    <TaskCard task={task} />
+                <div key={task.id} draggable onDragStart={(e) => handleDragStart(e, task.id)}>
+                    <div>{task.title}</div>
+                    <div>Priorité: {task.priority}</div>
+                    <div>Assigné à: {task.userId ? `User ${task.userId}` : "Non assigné"}</div>
+                    <button onClick={() => onDetails(task.id)}>Détails</button>
                 </div>
             ))}
         </div>
     );
-}
+};
 
 export default Column;

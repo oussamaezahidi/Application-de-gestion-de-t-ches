@@ -3,6 +3,7 @@ import axios from "axios";
 const db_json = "http://localhost:3001";
 
 export const fetchTasksAPI = () => axios.get(`${db_json}/tasks`);
+export const fetchTaskByIdAPI = (id) => axios.get(`${db_json}/tasks/${id}`);
 
 export const addTaskAPI = (task) =>
     axios.post(`${db_json}/tasks`, task);

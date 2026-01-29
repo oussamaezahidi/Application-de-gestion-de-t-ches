@@ -9,8 +9,8 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Kanban />} />
-        <Route path="/tasks/new" element={<TaskForm mode="create" />} />
-        <Route path="/task/:id" element={<TaskDetails />} />
+        <Route path="/task/new" element={<TaskForm mode="create" />} />
+        <Route path="/tasks/:id" element={<TaskDetails />} />
         <Route path="/task/:id/edit" element={<TaskForm mode="edit" />} />
         <Route path="/users" element={<Users />} />
       </Routes>
