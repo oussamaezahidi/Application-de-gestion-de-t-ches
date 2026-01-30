@@ -1,3 +1,54 @@
+# Kanban Project
+
+**Sujet du projet**
+
+Application Kanban simple permettant de gérer des tâches avec : création, modifications, tri par priorité, filtrage par utilisateur, et déplacement des tâches entre colonnes (drag & drop). Le backend est simulé avec `json-server` et les données se trouvent dans `backend/db.json`.
+
+**Membres de l'équipe**
+
+- Oussama Ezahidi
+- Meriem Boullous
+- Ranya Bahlouri
+
+**Prérequis**
+
+- Node.js (>= 14) et npm
+
+**Installation et lancement**
+
+1. Cloner le dépôt :
+
+```bash
+git clone <url-du-repo>
+cd kanban-project
+```
+
+2. Installer les dépendances :
+
+```bash
+npm install
+```
+
+3. Lancer le serveur mock (API) :
+
+```bash
+npm run server
+```
+
+Le serveur JSON s'exécute par défaut sur : `http://localhost:3001`.
+
+4. Lancer l'application front :
+
+```bash
+npm start
+```
+
+Ouvrir `http://localhost:3000` dans votre navigateur.
+
+> Astuce : vous pouvez aussi lancer `npm run dev` si vous utilisez `vite` (si configuré).
+
+---
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
