@@ -12,9 +12,10 @@ Application Kanban simple permettant de gérer des tâches avec : création, mod
 
 **Prérequis**
 
-- Node.js (>= 14) et npm
+- Node.js (>= 14) et npm 
+- Git
 
-**Installation et lancement**
+**Installation**
 
 1. Cloner le dépôt :
 
@@ -29,23 +30,63 @@ cd kanban-project
 npm install
 ```
 
-3. Lancer le serveur mock (API) :
+**Lancer le backend (serveur mock)**
+
+Démarrer le serveur JSON (mock API) :
 
 ```bash
 npm run server
 ```
 
-Le serveur JSON s'exécute par défaut sur : `http://localhost:3001`.
+Le serveur s'exécute par défaut sur : `http://localhost:3001`.
+Les données sont stockées dans `backend/db.json`.
 
-4. Lancer l'application front :
+**Lancer l'application (front)**
+
+Dans un autre terminal :
 
 ```bash
 npm start
 ```
 
-Ouvrir `http://localhost:3000` dans votre navigateur.
+Ouvrez `http://localhost:3000` dans votre navigateur.
 
-> Astuce : vous pouvez aussi lancer `npm run dev` si vous utilisez `vite` (si configuré).
+**Développement (conseils)**
+
+- Démarrez le backend et le frontend dans deux terminaux séparés (ex. un terminal pour `npm run server`, un autre pour `npm start`).
+- Vous pouvez aussi utiliser `npm run dev` si vous préférez `vite` et qu'il est configuré.
+
+**Build pour production**
+
+```bash
+npm run build
+```
+
+Le build optimisé est placé dans `build/`. Servez le dossier `build` avec un serveur statique (ex. `serve -s build`).
+
+**Remarque**
+
+- Si le port `3001` est déjà occupé, modifiez la commande `server` dans `package.json` ou arrêtez le processus qui utilise ce port.
+
+**Détails techniques**
+
+- **Sujet (rappel)** : Application Kanban simple pour créer, modifier, trier (par priorité), filtrer par utilisateur et déplacer des tâches entre colonnes (drag & drop). Backend mock via `json-server` (`backend/db.json`).
+
+- **Hooks utilisés** :
+  - React : `useState`, `useEffect`
+  - React Router : `useParams`, `useNavigate`
+  - Redux : `useSelector`, `useDispatch` (avec Redux Toolkit)
+  - Remarque : le projet n'utilise pas de hooks personnalisés (les fonctionnalités sont gérées dans les composants/pages).
+
+- **Style / UI** :
+  - **Bootstrap** est importé dans `src/index.js` pour la base responsive (`bootstrap/dist/css/bootstrap.min.css`).
+  - **Styles personnalisés** dans `src/App.css` : CSS variables, classes pour priorités (`priority-high|medium|low`), feedback de drag (`.dragging`, `td.drag-over`), responsive et support `prefers-color-scheme` (dark mode).
+  - Avatars : utilisation possible de UI Avatars (ex : `https://ui-avatars.com/api/?name=John+Doe...`).
+
+- **Autres artefacts** :
+  - Backend mock : `npm run server` (json-server)
+  - Routes principales : Kanban, TaskForm, TaskDetails, Users
+  - Build production : `npm run build`
 
 ---
 

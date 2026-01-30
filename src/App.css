@@ -1,0 +1,165 @@
+/*
+  App-wide CSS for the Kanban Project
+  - Styles for layout, header, controls, kanban columns, task cards, forms and users page
+  - Avatars can be generated via UI Avatars: https://ui-avatars.com/
+    Example image URL: https://ui-avatars.com/api/?name=John+Doe&background=6c9eff&color=fff&size=128
+*/
+
+:root{
+  --bg: #EEEEEE; /* very light pastel blue */
+  --card: #ffffff; /* white card */
+  --text: #123047; /* dark navy for readable text */
+  --muted: #6b7280; /* soft slate */
+  --primary: #6c9eff; /* light blue */
+  --success: #78e6b3; /* light green */
+  --danger: #ffb4b4; /* soft red/pink */
+  --accent-yellow: #fff7c2; /* soft yellow */
+  --shadow: rgba(15, 23, 42, 0.06);
+  --radius: 8px;
+  --border: #e6f4ff; /* subtle pastel border */
+  --max-width: 1100px;
+}    
+
+/* Reset & base */
+*{box-sizing:border-box}
+html,body,#root{height:100%}
+body{
+  margin:0;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+} 
+
+.container{
+  max-width:var(--max-width);
+  margin:32px auto;
+  padding:0 16px;
+}
+
+.app-header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:20px;
+}
+.app-title{
+  display:flex;
+  gap:12px;
+  align-items:center;
+}
+.app-title h1{margin:0;font-size:20px}
+.app-actions{display:flex;gap:8px}
+
+/* Controls */
+.controls{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  align-items:center;
+  margin-bottom:18px;
+}
+select, input[type="text"], textarea{
+  border:1px solid var(--border);
+  padding:8px 10px;
+  border-radius:6px;
+  background:var(--card);
+  outline:none;
+}   
+select:focus, input[type="text"]:focus, textarea:focus{box-shadow:0 0 0 4px rgba(108,158,255,0.12); border-color:var(--primary)} 
+
+button{cursor:pointer;border:0;padding:8px 12px;border-radius:6px;background:var(--card);box-shadow:0 1px 2px rgba(15,23,42,0.04)}
+.btn{display:inline-flex;align-items:center;gap:8px}
+.btn-primary{background:var(--primary);color:#fff;border:1px solid rgba(108,158,255,0.14)}
+.btn-primary:hover{filter:brightness(0.98)}
+.btn-ghost{background:transparent;border:1px solid var(--border);color:var(--muted)}  
+
+/* Table as Kanban container */
+table{width:100%;border-collapse:collapse}
+thead th{padding:10px;text-align:left;color:var(--muted);font-weight:600} 
+tbody td{vertical-align:top;padding:12px;height:70vh;width:33%}
+
+/* Column visuals */
+td{background:transparent}
+.kanban-column{
+  background:linear-gradient(180deg, var(--card), rgba(248,251,255,1));
+  border-radius:var(--radius);
+  min-height:60vh;
+  padding:12px;
+  box-shadow:0 1px 3px var(--shadow);
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+.column-title{font-weight:700;color:var(--primary);margin-bottom:6px}  
+
+/* Task card */
+.task-card{
+  display:block;
+  padding:12px;
+  background:var(--card);
+  border-radius:var(--radius);
+  box-shadow:0 1px 2px rgba(15,23,42,0.04);
+  border:1px solid var(--border);
+}  
+.task-card strong{display:block;margin-bottom:6px}
+.task-meta{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:13px;color:inherit} 
+
+.priority{display:inline-block;padding:4px 8px;border-radius:999px;font-weight:600;font-size:12px}
+.priority-high{background:rgba(255,180,180,0.18);color:#b91c1c;border:1px solid rgba(255,180,180,0.25)}
+.priority-medium{background:rgba(255,243,187,0.75);color:#975a16;border:1px solid rgba(255,243,187,0.85)}
+.priority-low{background:rgba(120,230,180,0.18);color:#0f7a39;border:1px solid rgba(120,230,180,0.25)} 
+
+/* Dragging visual feedback */
+.task-card[draggable="true"]{transition:transform .15s ease, box-shadow .15s ease}
+.task-card.dragging{opacity:0.85;transform:scale(0.99);box-shadow:0 6px 16px rgba(15,23,42,0.08)}
+td.drag-over{outline:3px dashed rgba(108,158,255,0.14);border-radius:var(--radius)}  
+
+/* Avatar */
+.avatar{width:36px;height:36px;border-radius:50%;object-fit:cover;border:2px solid #fff;box-shadow:0 1px 2px rgba(15,23,42,0.06)}  
+.avatar-sm{width:28px;height:28px}
+
+/* Users list */
+.users-list{display:flex;flex-direction:column;gap:10px}
+.user-row{display:flex;align-items:center;gap:12px;padding:8px;background:var(--card);border-radius:var(--radius);border:1px solid var(--border)}
+.user-row .username{font-weight:600}  
+
+/* Forms (TaskForm, TaskDetails) */
+.form-card{background:var(--card);padding:16px;border-radius:var(--radius);border:1px solid var(--border)}
+.form-row{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:12px}
+.form-row label{width:100%;font-weight:600;color:var(--primary)}  
+.form-actions{display:flex;gap:8px;justify-content:flex-end}
+
+/* Utilities */
+.center{display:flex;align-items:center;justify-content:center}
+.muted{color:var(--muted)}
+.small{font-size:13px}
+
+/* Responsive */
+@media (max-width:900px){
+  tbody td{display:block;width:100%;height:auto}
+  .kanban-column{min-height:150px}
+}
+
+@media (prefers-color-scheme:dark){
+  :root{
+    --bg:#EEEEEE;
+    --card:#287ba5;
+    --text:#e6eef8;
+    --muted:#9aa4b2;
+    --shadow:rgba(2,6,23,0.6);
+    --border:#162030;
+    --primary:#6c9eff;
+  }
+  body{color:var(--text)}
+  select,input,textarea{background:var(--card);border-color:var(--border)}
+}   
+
+/* Helpful comments for developers:
+ - To show avatars with UI Avatars dynamically, set the img src to:
+   `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&background=6c9eff&color=fff&size=128`
+ - Priority classes: add `priority-high|medium|low` to the element showing priority.
+ - Use `.dragging` on the dragged element to apply transform/opacity.
+*/

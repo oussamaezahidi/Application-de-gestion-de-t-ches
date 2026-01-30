@@ -3,17 +3,17 @@
     {
       "id": "1",
       "username": "sara",
-      "avatar": "https://ui-avatars.com/api/?name=sara"
+      "avatar": "https://ui-avatars.com/api/?name=sara&background=EEEEEE&color=555&size=64"
     },
     {
       "id": "2",
       "username": "youssef",
-      "avatar": "https://ui-avatars.com/api/?name=youssef"
+      "avatar": "https://ui-avatars.com/api/?name=youssef&background=EEEEEE&color=555&size=64"
     },
     {
       "id": "74d7",
       "username": "oussama",
-      "avatar": "https://ui-avatars.com/api/?name=oussama"
+      "avatar": "https://ui-avatars.com/api/?name=oussama&background=EEEEEE&color=555&size=64"
     }
   ],
   "tasks": [
@@ -21,7 +21,7 @@
       "id": "1",
       "title": "Apprendre Redux",
       "description": "Comprendre reducers, actions et store",
-      "status": "in-progress",
+      "status": "done",
       "priority": "high",
       "userId": "1"
     },
@@ -39,7 +39,7 @@
       "description": "tester react",
       "priority": "low",
       "userId": "74d7",
-      "status": "done"
+      "status": "in-progress"
     }
   ]
 }

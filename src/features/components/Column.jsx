@@ -1,5 +1,7 @@
 import React from 'react';
 
+const PRIORITY_LABELS = { high: "Haute", medium: "Moyenne", low: "Faible" };
+
 const Column = ({ title, status, tasks, onDrop, onDetails }) => {
     const handleDragOver = (e) => {
         e.preventDefault();
@@ -23,9 +25,9 @@ const Column = ({ title, status, tasks, onDrop, onDetails }) => {
             {tasks.map((task) => (
                 <div key={task.id} draggable onDragStart={(e) => handleDragStart(e, task.id)}>
                     <div>{task.title}</div>
-                    <div>Priorité: {task.priority}</div>
-                    <div>Assigné à: {task.userId ? `User ${task.userId}` : "Non assigné"}</div>
-                    <button onClick={() => onDetails(task.id)}>Détails</button>
+                    <div>Priorité : {PRIORITY_LABELS[task.priority] || task.priority}</div>
+                    <div>Assigné à : {task.userId ? `Utilisateur ${task.userId}` : "Non attribué"}</div>
+                    <button onClick={() => onDetails(task.id)}>Voir les détails</button>
                 </div>
             ))}
         </div>
